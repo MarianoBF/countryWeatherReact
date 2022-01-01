@@ -1,22 +1,41 @@
-import { useEffect } from "react";
-import SearchInput from "../components/SearchInput";
+import { useEffect, useState } from "react";
+import ResultsTable from "../components/ResultsTable";
 import CountryService from "../services/CountryService";
 
+import Button from "react-bootstrap/Button";
+
 function ByRegion() {
+  const regions = ["africa", "americas", "asia", "europe", "oceania"];
 
+  const [countryData, setCountryData] = useState([]);
 
-  useEffect(()=>{
-    CountryService.getCountriesByRegion().then(
-      res=>console.log(res)
-    )
-  })
+  const [selectedRegion, setSelectedRegion] = useState(null);
 
-    return (
-      <div className="App">
-        ByRegion
-        <SearchInput/>
-      </div>
-    );
+  useEffect(() => {
+    if (selectedRegion) {
+      CountryService.getCountriesByRegion(selectedRegion).then((res) =>
+        setCountryData(res.data)
+      );
+    }
+  }, [selectedRegion]);
+
+  const handleSelectRegion = (region) => {
+    setSelectedRegion(region);
   }
-  
-  export default ByRegion;
+
+  const regionsButtons = regions.map((item) => (
+    <Button variant="primary" onClick={()=>handleSelectRegion(item)} key={item}>
+      {item}
+    </Button>
+  ));
+
+  return (
+    <div className="App">
+      ByRegion
+      <div>{regionsButtons}</div>
+      <ResultsTable seedData={countryData} />
+    </div>
+  );
+}
+
+export default ByRegion;

@@ -1,8 +1,8 @@
 import http from "./http-common";
 
 class UsersDataService {
-    getCountriesByRegion() {
-      return http.get("/region/americas");
+    getCountriesByRegion(region) {
+      return http.get("/region/"+region);
     }
   
   }
