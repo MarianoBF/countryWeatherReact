@@ -7,24 +7,24 @@ function ResultsTable({seedData}) {
 
     useEffect(()=> {
     setTableData(
-        seedData.map((item)=>(
+        seedData.map((item, idx)=>(
         <tr key={item.name.common}>
-            <td></td>
-            <td>{item.name.common}</td>
+            <td>{idx + 1}</td>
+            <td className="leftAlign">{item.name.common}</td>
             <td><img className="miniFlag" src={item.flags.svg} alt={item.name.common} /></td>
-            <td>{item.population}</td>
-            <td></td>
+            <td>{item.population.toLocaleString()}</td>
+            <td>Ver más</td>
         </tr>
         )        
     ))
     },[seedData]);
 
     return (
-        <Table striped bordered hover>
+        <Table striped bordered hover className="resultsTable">
         <thead>
             <tr>
             <th>#</th>
-            <th>Nombre</th>
+            <th className="leftAlign">Nombre</th>
             <th>Bandera</th>
             <th>Población</th>
             <th>Más</th>
