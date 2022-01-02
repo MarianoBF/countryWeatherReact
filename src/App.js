@@ -8,15 +8,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div className="layout">
     <BrowserRouter>
-    <Sidebar />
+    <div className="sidebar">
+      <Sidebar />
+    </div>
+    <div className="mainLayout">
       <Routes>
         <Route exact path="/" element={<ByRegion />}>
         </Route>
       </Routes>
+    </div>
     </BrowserRouter>
-    </>
+    </div>
   );
 }
 

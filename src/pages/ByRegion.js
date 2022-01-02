@@ -24,14 +24,14 @@ function ByRegion() {
   }
 
   const regionsButtons = regions.map((item) => (
-    <Button variant="primary" onClick={()=>handleSelectRegion(item)} key={item}>
+    <Button className="m-2" variant="primary" onClick={()=>handleSelectRegion(item)} key={item}>
       {item}
     </Button>
   ));
 
   return (
     <div className="App">
-      ByRegion
+      Listar países de una región
       <div>{regionsButtons}</div>
       <ResultsTable seedData={countryData} />
     </div>

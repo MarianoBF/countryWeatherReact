@@ -2,3 +2,25 @@
   max-width: 30px;
   max-height: 20px;
 }
+
+.active {
+  font-size: 1.5rem;
+}
+
+li {
+  cursor: pointer;
+}
+
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  max-width: 30%;
+  width: 30%;
+}
+
+.mainLayout {
+  width: 70%;
+  margin: 20px 10px;
+}
