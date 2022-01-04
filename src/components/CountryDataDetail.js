@@ -18,8 +18,8 @@ function CountryDataDetail({countryData}) {
       )
     )
 
-    const otherLanguagesData = Object.values(countryData.translations).map(item=>(
-      <p>{item.common}</p>
+    const otherLanguagesData = Object.entries(countryData.translations).map(item=>(
+      <p>{item[0]} -- {item[1].common}</p>
       )
     )
 
