@@ -7,6 +7,7 @@ import Flags from './pages/Flags';
 import FindCountry from './pages/FindCountry';
 import FindCapital from './pages/FindCapital';
 import FindBorders from './pages/FindBorders';
+import CountryDetail from './pages/CountryDetail';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,10 +21,12 @@ function App() {
     <div className="mainLayout">
       <Routes>
         <Route exact path="/" element={<ByRegion />} />
-        <Route exact path="/pais" element={<FindCountry />} />
-        <Route exact path="/banderas" element={<Flags />} />
-        <Route exact path="/capital" element={<FindCapital />} />
-        <Route exact path="/limitrofes" element={<FindBorders />} />
+        <Route path="/pais/:id" element={<CountryDetail />} />
+        <Route path="/pais" element={<FindCountry />} />
+        <Route path="/banderas" element={<Flags />} />
+        <Route path="/capital" element={<FindCapital />} />
+        <Route path="/limitrofes" element={<FindBorders />} />
+        <Route path="*" element={<ByRegion />} />
       </Routes>
     </div>
     </BrowserRouter>
