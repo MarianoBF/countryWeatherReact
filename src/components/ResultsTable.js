@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function ResultsTable({seedData}) {
 
@@ -13,7 +14,7 @@ function ResultsTable({seedData}) {
             <td className="leftAlign">{item.name.common}</td>
             <td><img className="miniFlag" src={item.flags.svg} alt={item.name.common} /></td>
             <td>{item.population.toLocaleString()}</td>
-            <td>Ver más</td>
+            <td><Link to={"/pais/"+item.cca3}>Ver más</Link></td>
         </tr>
         )        
     ))

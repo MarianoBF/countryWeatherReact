@@ -1,25 +1,17 @@
 function CountryDataDetail({countryData}) {
 
-    if (!countryData) {
-      return (
-        <div>
-          Loading
-        </div>
-      )
-    }
-
     const languagesData = Object.values(countryData.languages).map(item=>(
-      <li>{item}</li>
+      <li key={item}>{item}</li>
       )
     )
 
     const currencyData = Object.values(countryData.currencies).map(item=>(
-      <p>{item.name} - Símbolo: {item.symbol}</p>
+      <p key={item.symbol}>{item.name} - Símbolo: {item.symbol}</p>
       )
     )
 
-    const otherLanguagesData = Object.entries(countryData.translations).map(item=>(
-      <p>{item[0]} -- {item[1].common}</p>
+    const otherLanguagesData = Object.entries(countryData.translations).map((item, index)=>(
+      <li key={item[1].common+index}>{item[0]} -- {item[1].common}</li>
       )
     )
 
@@ -32,10 +24,6 @@ function CountryDataDetail({countryData}) {
               <div><span className="label">Idiomas:</span><ul>{languagesData}</ul></div>
               <div><span className="label">Monedas:</span>{currencyData}</div>
               <div><span className="label">Nombre en otros idiomas:</span><ul>{otherLanguagesData}</ul></div>
-
-
-              {/* <div><p className="label">Moneda:</p> <p *ngFor="let currency of countryData.currencies">{{currency.name}}</p></div>
-              <div><p className="label">Nombre en otros idiomas:</p> <p *ngFor="let trans of countryData.translations | keyvalue"><span className="language">{{trans.key}}:</span> {{trans.value}}</p></div> */}
           </div>
           <div className="col-6">
               <img src={countryData.flags.png} className="mediumFlag" alt="flag"/>
