@@ -32,3 +32,19 @@ li {
 .leftAlign, .resultsTable .leftAlign {
   text-align: left;
 }
+
+.mediumFlag {
+  max-width: 300px;
+  max-height: 200px;
+  margin: 50px;
+  float: right;
+}
+
+.label {
+  font-weight: 600;
+  font-size: larger;
+}
+
+.language {
+  font-weight: bolder;
+}

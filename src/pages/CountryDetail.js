@@ -19,8 +19,7 @@ function CountryDetail() {
 
   return (
     <div className="App">
-      <h1>Detalle del país {id} {countryData?.name?.common}</h1>
-      <CountryDataDetail />
+      <CountryDataDetail countryData={countryData} />
     </div>
   );
   }
