@@ -3,6 +3,25 @@
   max-height: 20px;
 }
 
+.smallFlag {
+  max-width: 100px;
+  max-height: 75px;
+}
+
+.mediumFlag {
+  max-width: 300px;
+  max-height: 200px;
+  margin: 50px;
+  float: right;
+}
+
+.flagsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
 .active {
   font-size: 1.5rem;
 }
@@ -33,12 +52,7 @@ li {
   text-align: left;
 }
 
-.mediumFlag {
-  max-width: 300px;
-  max-height: 200px;
-  margin: 50px;
-  float: right;
-}
+
 
 .label {
   font-weight: 600;
