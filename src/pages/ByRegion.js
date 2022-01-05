@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ResultsTable from "../components/ResultsTable";
+import Loading from "../components/Loading";
 import CountryService from "../services/CountryService";
 
 import Button from "react-bootstrap/Button";
@@ -11,23 +12,36 @@ function ByRegion() {
 
   const [selectedRegion, setSelectedRegion] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (selectedRegion) {
-      CountryService.getCountriesByRegion(selectedRegion).then((res) =>
-        setCountryData(res.data)
-      );
+      setLoading(true);
+      CountryService.getCountriesByRegion(selectedRegion).then((res) => {
+        setCountryData(res.data);
+        setLoading(false);
+      });
     }
   }, [selectedRegion]);
 
   const handleSelectRegion = (region) => {
     setSelectedRegion(region);
-  }
+  };
 
   const regionsButtons = regions.map((item) => (
-    <Button className="m-2" variant="primary" onClick={()=>handleSelectRegion(item)} key={item}>
+    <Button
+      className="m-2"
+      variant="primary"
+      onClick={() => handleSelectRegion(item)}
+      key={item}
+    >
       {item}
     </Button>
   ));
+
+  if (!countryData || loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="App">

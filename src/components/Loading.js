@@ -1,9 +1,7 @@
+import Spinner from "react-bootstrap/Spinner";
+
 function Loading() {
-    return (
-      <div>
-      Loading....
-      </div>
-    );
-  }
-  
-  export default Loading;
+  return <Spinner animation="border" variant="primary" />;
+}
+
+export default Loading;

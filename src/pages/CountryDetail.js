@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 
 import CountryService from "../services/CountryService";
 import CountryDataDetail from "../components/CountryDataDetail";
+import Loading from "../components/Loading";
 
 function CountryDetail() {
   const [countryData, setCountryData] = useState([]);
@@ -12,6 +13,7 @@ function CountryDetail() {
 
   useEffect(() => {
     if (id) {
+      setLoading(true);
       CountryService.getCountryById(id).then((res) => {
         setCountryData(res.data[0]);  
         setLoading(false)
@@ -22,9 +24,7 @@ function CountryDetail() {
 
   if (!countryData || loading) {
     return (
-      <div>
-        Loading {loading}
-      </div>
+      <Loading />
     )
   }
 
