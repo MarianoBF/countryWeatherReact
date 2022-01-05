@@ -21,7 +21,7 @@ function SearchInput({handleSearch}) {
       <div>
       <Form onSubmit={handleForm}>
         <Form.Group className="mb-3">
-          <Form.Label>Buscar orden:</Form.Label>
+          <Form.Label>Buscar:</Form.Label>
           <Form.Control type="text" onChange={handleInput}/>
         </Form.Group>
         <Button type="submit">Buscar</Button>

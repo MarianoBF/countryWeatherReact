@@ -10,6 +10,9 @@ class UsersDataService {
       return http.get("/region/"+region);
     }
 
+    searchCountryByName(country) {
+      return http.get("/name/"+country);
+    }
     searchCountryByCapital(capital) {
       return http.get("/capital/"+capital);
     }
