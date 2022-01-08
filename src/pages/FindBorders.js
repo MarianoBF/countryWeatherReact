@@ -15,12 +15,12 @@ function FindBorders() {
   ))
 
   const [selectedRegion, setSelectedRegion] = useState(null);
+  const [regionCountryList, setRegionCountryList] = useState([]);
 
   const handleSelectRegion = (e) => {
     setSelectedRegion(e.target.value);
   };
 
-  const [regionCountryList, setRegionCountryList] = useState([]);
 
   useEffect(() => {
     if (selectedRegion) {
@@ -34,27 +34,71 @@ function FindBorders() {
     }
   }, [selectedRegion]);
 
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [borderCountryList, setBorderCountryList] = useState([]);
+
+  const handleSelectCountry = (e) => {
+    setSelectedCountry(e.target.value);
+  };
+
+  useEffect(() => {
+    if (selectedCountry) {
+      setLoading(true);
+      CountryService.searchCountryByName(selectedCountry).then((res) => {
+        setBorderCountryList(res.data[0].borders.map(item=>(
+          <option key={item}>{item}</option>
+        )));
+        setLoading(false);
+      });
+    }
+  }, [selectedCountry]);
+
+  const [selectedBorder, setSelectedBorder] = useState(null);
+  const [selectedDetail, setSelectedDetail] = useState(null);
+
+  const handleSelectedBorder = (e) => {
+    setSelectedBorder(e.target.value);
+  };
+
+  useEffect(() => {
+    if (selectedBorder) {
+      setLoading(true);
+      CountryService.getCountryById(selectedBorder).then((res) => {
+        setSelectedDetail(res.data);
+        setLoading(false);
+      });
+    }
+  }, [selectedBorder]);
+
   if (loading) {
     return <Loading />;
   }
 
   return (
-    <div>
-      <h1>Buscar limítrofes de un país</h1>
+    <>
+      <h1>Ver detalles de países limítrofes</h1>
       <Form.Group className="mb-4" controlId="formRegion">
-        <Form.Label>Región</Form.Label>
+        <Form.Label>Seleccioná Región</Form.Label>
         <Form.Select size="lg" onChange={handleSelectRegion} value={selectedRegion}>
         <option></option>
           {regionsList}
         </Form.Select>
       </Form.Group>
       <Form.Group className="mb-4" controlId="formCountryList">
-        <Form.Label>País</Form.Label>
-        <Form.Select size="lg" onChange={null}>
+        <Form.Label>Seleccioná País</Form.Label>
+        <Form.Select size="lg" onChange={handleSelectCountry} value={selectedCountry}>
+          <option></option>
           {regionCountryList}
         </Form.Select>
       </Form.Group>
-    </div>
+      <Form.Group className="mb-4" controlId="formCountryList">
+        <Form.Label>Seleccioná un Limítrofe</Form.Label>
+        <Form.Select size="lg" onChange={handleSelectedBorder} value={selectedBorder}>
+          <option></option>
+          {borderCountryList}
+        </Form.Select>
+      </Form.Group>
+    </>
   );
 }
 
