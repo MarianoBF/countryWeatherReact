@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import Loading from "../components/Loading";
 import CountryService from "../services/CountryService";
+import CountryDataDetail from "../components/CountryDataDetail";
 
 function FindBorders() {
   const [loading, setLoading] = useState(false);
@@ -14,7 +15,7 @@ function FindBorders() {
     <option key={item}>{item}</option>
   ))
 
-  const [selectedRegion, setSelectedRegion] = useState(null);
+  const [selectedRegion, setSelectedRegion] = useState('');
   const [regionCountryList, setRegionCountryList] = useState([]);
 
   const handleSelectRegion = (e) => {
@@ -34,7 +35,7 @@ function FindBorders() {
     }
   }, [selectedRegion]);
 
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState('');
   const [borderCountryList, setBorderCountryList] = useState([]);
 
   const handleSelectCountry = (e) => {
@@ -53,7 +54,7 @@ function FindBorders() {
     }
   }, [selectedCountry]);
 
-  const [selectedBorder, setSelectedBorder] = useState(null);
+  const [selectedBorder, setSelectedBorder] = useState('');
   const [selectedDetail, setSelectedDetail] = useState(null);
 
   const handleSelectedBorder = (e) => {
@@ -64,7 +65,7 @@ function FindBorders() {
     if (selectedBorder) {
       setLoading(true);
       CountryService.getCountryById(selectedBorder).then((res) => {
-        setSelectedDetail(res.data);
+        setSelectedDetail(res.data[0]);
         setLoading(false);
       });
     }
@@ -98,6 +99,9 @@ function FindBorders() {
           {borderCountryList}
         </Form.Select>
       </Form.Group>
+      {selectedDetail &&
+      <CountryDataDetail countryData={selectedDetail}/>
+      }
     </>
   );
 }
