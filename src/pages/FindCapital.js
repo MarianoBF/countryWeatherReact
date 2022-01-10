@@ -23,7 +23,7 @@ function FindCapital() {
 
   return (
     <div className="App">
-      <h1>Buscar país por capital</h1>
+      <h2>Buscar país por capital</h2>
       <SearchInput handleSearch={handleSearch}/>
       <ResultsTable seedData={countryData} />
     </div>

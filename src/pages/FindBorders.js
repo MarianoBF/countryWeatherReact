@@ -77,7 +77,7 @@ function FindBorders() {
 
   return (
     <>
-      <h1>Ver detalles de países limítrofes</h1>
+      <h2>Ver detalles de países limítrofes</h2>
       <Form.Group className="mb-4" controlId="formRegion">
         <Form.Label>Seleccioná Región</Form.Label>
         <Form.Select size="lg" onChange={handleSelectRegion} value={selectedRegion}>

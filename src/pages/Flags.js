@@ -28,7 +28,12 @@ function Flags() {
     return <Loading />;
   }
 
-  return <div className="flagsGrid">{flags}</div>;
+  return (
+    <>
+      <h2>Listado de banderas</h2>
+      <div className="flagsGrid">{flags}</div>;
+    </>
+  );
 }
 
 export default Flags;

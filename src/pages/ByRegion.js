@@ -45,7 +45,7 @@ function ByRegion() {
 
   return (
     <div className="App">
-      <h1>Listar países de una región</h1>
+      <h2>Listar países de una región</h2>
       <div>{regionsButtons}</div>
       <ResultsTable seedData={countryData} />
     </div>

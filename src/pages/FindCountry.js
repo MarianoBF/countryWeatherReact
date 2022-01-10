@@ -33,7 +33,7 @@ function FindCountry() {
 
   return (
     <div className="App">
-      <h1>Buscar país</h1>
+      <h2>Buscar país</h2>
       <SearchInput handleSearch={handleSearch} />
       <ResultsTable seedData={countryData} />
     </div>

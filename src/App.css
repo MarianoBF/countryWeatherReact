@@ -6,6 +6,7 @@
 .smallFlag {
   max-width: 100px;
   max-height: 75px;
+  cursor: pointer;
 }
 
 .mediumFlag {
