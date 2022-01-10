@@ -1,15 +1,37 @@
 import Nav from "react-bootstrap/Nav";
+import { LinkContainer } from "react-router-bootstrap";
+import { useState } from "react";
 
 function Sidebar() {
+  const [active, setActive] = useState("aa");
+
   return (
     <div>
-      <h3>Buscar</h3>
-      <Nav variant="pills" activeKey="/" defaultActiveKey="/" className="flex-column">
-        <Nav.Link eventKey="link-0" href="/">Buscar por región</Nav.Link>
-        <Nav.Link eventKey="link-1" href="/capital">Buscar por capital</Nav.Link>
-        <Nav.Link eventKey="link-2" href="/limitrofes">Buscar limítrofes</Nav.Link>
-        <Nav.Link eventKey="link-3" href="/pais">Buscar país</Nav.Link>
-        <Nav.Link eventKey="link-4" href="/banderas">Listar banderas</Nav.Link>
+      <h3>Buscar {active}</h3>
+      <Nav
+        variant="tabs"
+        activeKey={active}
+        className="flex-column"
+        onSelect={(selectedKey) => {
+          console.log(selectedKey);
+          setActive(selectedKey);
+        }}
+      >
+        <LinkContainer to="/region">
+          <Nav.Link>Buscar por región</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/capital">
+          <Nav.Link>Buscar por capital</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/limitrofes">
+          <Nav.Link>Buscar limítrofes</Nav.Link>
+        </LinkContainer>{" "}
+        <LinkContainer to="/pais">
+          <Nav.Link>Buscar país</Nav.Link>
+        </LinkContainer>{" "}
+        <LinkContainer to="/banderas">
+          <Nav.Link>Listar banderas</Nav.Link>
+        </LinkContainer>
       </Nav>
     </div>
   );

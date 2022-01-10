@@ -23,6 +23,11 @@
   justify-items: center;
 }
 
+.flagsGrid a {
+  color: black;
+  text-align: center;
+}
+
 .active {
   font-size: 1.5rem;
 }

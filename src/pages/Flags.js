@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import CountryService from "../services/CountryService";
 
@@ -18,10 +19,12 @@ function Flags() {
   }, []);
 
   const flags = countryData.map((item) => (
-    <div key={item.cca3}>
-      <img src={item.flags.png} className="smallFlag" alt="flag" />
-      <p>{item.name.common}</p>
-    </div>
+    <Link to={"/pais/" + item.cca3}>
+      <div key={item.cca3}>
+        <img src={item.flags.png} className="smallFlag" alt="flag" />
+        <p>{item.name.common}</p>
+      </div>
+    </Link>
   ));
 
   if (loading) {
